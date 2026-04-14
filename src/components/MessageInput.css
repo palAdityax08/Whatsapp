@@ -1,0 +1,178 @@
+/* ============================================
+   MessageInput Styles
+   ============================================ */
+
+.message-input {
+  position: relative;
+  background-color: var(--input-bg);
+  padding: 8px 16px;
+  border-top: 1px solid var(--border-color-light);
+}
+
+.message-input__container {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+/* --- Icon Buttons --- */
+.message-input__icon-btn {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: none;
+  color: var(--icon-color);
+  cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.message-input__icon-btn:hover {
+  background-color: var(--hover-bg);
+  color: var(--text-primary);
+}
+
+.message-input__icon-btn--active {
+  color: var(--primary-green);
+}
+
+/* --- Textarea --- */
+.message-input__textarea {
+  flex: 1;
+  background-color: var(--search-bg);
+  border: none;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 14.5px;
+  font-family: 'Inter', sans-serif;
+  color: var(--text-primary);
+  outline: none;
+  resize: none;
+  min-height: 20px;
+  max-height: 120px;
+  line-height: 1.4;
+  transition: box-shadow 0.2s;
+}
+
+.message-input__textarea::placeholder {
+  color: var(--text-secondary);
+}
+
+.message-input__textarea:focus {
+  box-shadow: 0 0 0 2px rgba(0, 168, 132, 0.15);
+}
+
+.message-input__textarea::-webkit-scrollbar {
+  width: 4px;
+}
+
+.message-input__textarea::-webkit-scrollbar-thumb {
+  background-color: rgba(134, 150, 160, 0.3);
+  border-radius: 2px;
+}
+
+/* --- Send Button --- */
+.message-input__send-btn {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: linear-gradient(135deg, #00a884, #25d366);
+  color: white;
+  cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 168, 132, 0.3);
+  animation: send-appear 0.2s ease;
+}
+
+@keyframes send-appear {
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.message-input__send-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 4px 12px rgba(0, 168, 132, 0.4);
+}
+
+.message-input__send-btn:active {
+  transform: scale(0.95);
+}
+
+/* --- Emoji Picker --- */
+.message-input__emoji-picker {
+  position: absolute;
+  bottom: 100%;
+  left: 16px;
+  width: 320px;
+  background-color: var(--sidebar-bg);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  padding: 12px;
+  margin-bottom: 8px;
+  animation: emoji-slide 0.2s ease;
+  z-index: 100;
+  border: 1px solid var(--border-color);
+}
+
+@keyframes emoji-slide {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.message-input__emoji-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 2px;
+}
+
+.message-input__emoji-btn {
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 20px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+}
+
+.message-input__emoji-btn:hover {
+  background-color: var(--hover-bg);
+  transform: scale(1.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .message-input {
+    padding: 6px 10px;
+  }
+
+  .message-input__emoji-picker {
+    width: calc(100vw - 32px);
+    left: 8px;
+  }
+}

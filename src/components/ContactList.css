@@ -1,0 +1,312 @@
+/* ============================================
+   ContactList Styles
+   ============================================ */
+
+.contact-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background-color: var(--sidebar-bg);
+  border-right: 1px solid var(--border-color);
+}
+
+/* --- Header --- */
+.contact-list__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  background-color: var(--header-bg);
+  min-height: 59px;
+}
+
+.contact-list__header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.contact-list__user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00a884, #25d366);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  flex-shrink: 0;
+}
+
+.contact-list__title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.contact-list__header-actions {
+  display: flex;
+  gap: 4px;
+}
+
+.contact-list__action-btn {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: none;
+  color: var(--icon-color);
+  cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+}
+
+.contact-list__action-btn:hover {
+  background-color: var(--hover-bg);
+}
+
+/* --- Search --- */
+.contact-list__search {
+  padding: 8px 12px;
+  background-color: var(--sidebar-bg);
+}
+
+.contact-list__search-wrapper {
+  display: flex;
+  align-items: center;
+  background-color: var(--search-bg);
+  border-radius: 8px;
+  padding: 0 12px;
+  height: 35px;
+  transition: all 0.2s ease;
+}
+
+.contact-list__search-wrapper:focus-within {
+  box-shadow: 0 0 0 2px var(--primary-green);
+}
+
+.contact-list__search-icon {
+  color: var(--icon-color);
+  flex-shrink: 0;
+  transition: color 0.2s ease;
+}
+
+.contact-list__search-wrapper:focus-within .contact-list__search-icon {
+  color: var(--primary-green);
+}
+
+.contact-list__search-input {
+  flex: 1;
+  border: none;
+  background: none;
+  outline: none;
+  color: var(--text-primary);
+  font-size: 14px;
+  padding: 0 12px;
+  font-family: 'Inter', sans-serif;
+}
+
+.contact-list__search-input::placeholder {
+  color: var(--text-secondary);
+}
+
+.contact-list__search-clear {
+  background: none;
+  border: none;
+  color: var(--icon-color);
+  cursor: pointer;
+  font-size: 14px;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: color 0.2s;
+}
+
+.contact-list__search-clear:hover {
+  color: var(--primary-green);
+}
+
+/* --- Contact Items --- */
+.contact-list__items {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.contact-list__items::-webkit-scrollbar {
+  width: 6px;
+}
+
+.contact-list__items::-webkit-scrollbar-thumb {
+  background-color: rgba(134, 150, 160, 0.3);
+  border-radius: 3px;
+}
+
+.contact-list__empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+/* --- Individual Contact --- */
+.contact-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+  border-bottom: 1px solid var(--border-color-light);
+  position: relative;
+}
+
+.contact-item:hover {
+  background-color: var(--hover-bg);
+}
+
+.contact-item--active {
+  background-color: var(--active-chat-bg);
+}
+
+.contact-item--active:hover {
+  background-color: var(--active-chat-bg);
+}
+
+.contact-item__avatar-wrapper {
+  position: relative;
+  flex-shrink: 0;
+  margin-right: 13px;
+}
+
+.contact-item__avatar {
+  width: 49px;
+  height: 49px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  user-select: none;
+}
+
+.contact-item__online-dot {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  width: 12px;
+  height: 12px;
+  background-color: #25d366;
+  border-radius: 50%;
+  border: 2px solid var(--sidebar-bg);
+  animation: pulse-online 2s infinite;
+}
+
+@keyframes pulse-online {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.contact-item__info {
+  flex: 1;
+  min-width: 0;
+  padding: 2px 0;
+}
+
+.contact-item__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 3px;
+}
+
+.contact-item__name {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.contact-item__time {
+  font-size: 12px;
+  color: var(--text-secondary);
+  flex-shrink: 0;
+  margin-left: 8px;
+}
+
+.contact-item__time--unread {
+  color: var(--primary-green);
+  font-weight: 500;
+}
+
+.contact-item__bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.contact-item__last-message {
+  font-size: 13.5px;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.contact-item__check {
+  color: var(--text-secondary);
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.contact-item__status {
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+.contact-item__badge {
+  background-color: var(--primary-green);
+  color: white;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 12px;
+  min-width: 20px;
+  text-align: center;
+  flex-shrink: 0;
+  margin-left: 8px;
+  animation: badge-pop 0.3s ease;
+}
+
+@keyframes badge-pop {
+  0% { transform: scale(0); }
+  70% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+/* Responsive: hide sidebar on mobile when chat is active */
+@media (max-width: 768px) {
+  .contact-list {
+    border-right: none;
+  }
+}
